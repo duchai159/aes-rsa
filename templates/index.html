@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AES Encryption/Decryption</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+
+</head>
+
+<body class="src-arg-rlt">
+    <div class="main" id="mac">
+        <h1>Mã hóa / giải mã AES</h1>
+        <input type="file" id="file-input" accept=".txt,.doc,.pdf,.jpg,.png" />
+        <div id="file-output">
+            <a id="download-link"></a>
+        </div>
+
+        <div class="srcbox">
+            <textarea id="src" spellcheck="false" placeholder="Vui lòng nhập nội dung cần mã hóa hoặc giải mã"
+                class="form-control"></textarea>
+            <div class="charset-dock">
+                <div class="charset-box">
+                    <select id="srcType" class="form-control">
+                        <option value="utf8">UTF-8</option>
+                        <option value="base64">Base64</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="info form-inline">
+            <div class="args">
+                <select id="mode" class="form-control">
+                    <option value="ecb">ECB</option>
+                    <option value="cbc">CBC</option>
+                    <option value="cfb">CFB</option>
+                    <option value="ofb">OFB</option>
+                    <option value="ctr">CTR</option>
+                </select>
+                <select id="padding" class="form-control">
+                    <option value="PKCS7">PKCS7</option>
+                    <option value="ANSIX923">Ansix923</option>
+                    <option value="none">None</option>
+                </select>
+                <select id="keySize" title="độ dài chìa khóa" class="form-control">
+                    <option value="128">128</option>
+                    <option value="192">192</option>
+                    <option value="256">256</option>
+                </select>
+
+                <input autocomplete="off" id="key" placeholder="Key" maxlength="16" required="required"
+                    spellcheck="false" class="form-control" />
+                <input autocomplete="off" id="IV" placeholder="IV (option)" maxlength="16" style="display: none"
+                    class="form-control" />
+            </div>
+            <div class="right">
+                <input type="button" value="Mã hóa" onclick="func(true)" class="btn btn-success" />
+                <input type="button" value="Giải mã" onclick="func(false)" class="btn btn-warning" />
+            </div>
+        </div>
+
+        <div class="outbox auto-height">
+            <div class="charset-dock">
+                <div class="charset-box">
+                    <select id="outType" class="form-control">
+                        <option value="UTF8">UTF-8</option>
+                        <option value="BASE64">Base64</option>
+                    </select>
+                </div>
+            </div>
+            <textarea id="output" spellcheck="false" placeholder="Kết quả sẽ được hiển thị ở đây."
+                class="form-control"></textarea>
+        </div>
+    </div>
+</body>
+
+</html>
