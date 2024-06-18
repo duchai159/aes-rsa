@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="vi">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RSA Encryption/Decryption</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <script src="{{ url_for('static', filename='rsa.js') }}"></script>
+
+</head>
+
+<body class="src-arg-rlt">
+
+    <div class="main" id="mac">
+        <h1>RSA encryption / decryption</h1>
+        <h2>Chưa hoàn thành!</h2>
+        <!-- <div class="srcbox">
+            <div class="key-and-content">
+                <div class="key-panel panel panel-info" style="padding:5px;">
+                    <textarea name="key" c="" placeholder="Khóa Rsa được mã hóa PEM"
+                        data-checkurl="/cryptography/CheckPem" required="required" class="form-control icon-key"
+                        onchange="keypair_onchage(this, {type:'rsa'});" rows="3"
+                        style="height: 133px; width: 562px;"></textarea>
+                    <div class="keyInfo label label-info"></div>
+                </div>
+                <div class="content">
+                    <textarea name="src" placeholder="Vui lòng nhập những gì cần được mã hóa hoặc giải mã"
+                        required="required" class="form-control"></textarea>
+                </div>
+
+            </div>
+            <div class="charset-dock">
+                <div class="charset-box">
+                    <select name="srcType" class="form-control">
+                        <option value="utf8">UTF-8</option>
+                        <option value="gbk">GB2312/GBK</option>
+                        <option value="unicode">UTF-16_LE</option>
+                        <option value="base64">Base64</option>
+                        <option value="hex">Hex</option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div class="info form-inline">
+            <div class="args">
+                <div class="option">
+                    <div class="option-name"> Loại khóa mã hóa:</div>
+                    <label class="option-item" data-toggle="tooltip" title=""
+                        data-original-title="Mã hóa bằng khóa công khai, Sử dụng khóa riêng để giải mã.">
+                        <input type="radio" value="0" name="mode" checked="checked" onclick="mode_onclick(this, null);">
+                        công khai
+                    </label>
+                    <label class="option-item" data-toggle="tooltip" title=""
+                        data-original-title="Mã hóa bằng khóa riêng, Sử dụng khóa công khai để giải mã.">
+                        <input type="radio" value="1" name="mode" onclick="mode_onclick(this,  null);"> khóa riêng
+                    </label>
+                </div>
+                <select name="padding" class="form-control">
+                    <option value="pkcs1">PKCS1</option>
+                </select>
+            </div>
+            <div class="right">
+                <input type="button" value="Encrypt with Khóa công khai" data-toggle="tooltip"
+                    onclick="rsaCrypt_onclick(this, { encrypt: true });" class="btn btn-success"
+                    data-original-title="tính năng bị vô hiệu hóa ,yêu cầu cung cấp khóa riêng tư" title="">
+                <input type="button" value="Decrypt with Khóa cá nhân" data-toggle="tooltip"
+                    onclick="rsaCrypt_onclick(this, { encrypt: false });" class="btn btn-warning"
+                    data-original-title="tính năng bị vô hiệu hóa ,yêu cầu cung cấp khóa riêng tư" title="">
+            </div>
+            <div class="c"></div>
+        </div>
+        <div class="outbox auto-height" style="height: 657.469px;">
+            <div class="charset-dock">
+                <div class="charset-box">
+                    <select name="outType" class="form-control">
+                        <option value="smart">tự động</option>
+                        <option value="utf8">UTF-8</option>
+                        <option value="utf16">UTF-16 LE</option>
+                        <option value="gbk">GB2312/GBK</option>
+                        <option value="base32">BASE32</option>
+                        <option value="base64">BASE64</option>
+                        <option value="hex-16">HEX/BASE16</option>
+                        <option value="hex-ascii">HEX+AscII</option>
+                        <option value="array">Array</option>
+                    </select>
+                </div>
+            </div>
+            <textarea id="output" placeholder="Kết quả sẽ được hiển thị ở đây." class="form-control"></textarea>
+        </div> -->
+
+    </div>
+</body>
+
+</html>
