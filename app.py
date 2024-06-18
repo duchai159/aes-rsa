@@ -1,5 +1,5 @@
 import base64
-from aes import AES
+from src.aes.aes import AES
 from flask import Flask, render_template, jsonify, request
 
 app = Flask(__name__)
@@ -8,8 +8,16 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
+@app.route('/aes', methods=['GET'])
+def aes_page():
+    return render_template('aes.html')
+
+@app.route('/rsa', methods=['GET'])
+def rsa_page():
+    return render_template('rsa.html')
+
 @app.route('/aes', methods=['POST'])
-def aes_text():
+def aes():
     args = request.json
 
     if (args["inputType"]== "UTF8"):
@@ -17,17 +25,17 @@ def aes_text():
     else:
         input = base64.b64decode(args["input"])
 
-    
+    iv = args["iv"].encode('utf-8')
     if (args["encrypt"]):
-        response = encrypt(args["padding"],
+        response = encrypt_aes(args["padding"],
             args["mode"],
-            args["iv"],
+            iv,
             input,
             args["key"])
     else:
-        response = decrypt(args["padding"],
+        response = decrypt_aes(args["padding"],
             args["mode"],
-            args["iv"],
+            iv,
             input,
             args["outputType"],
             args["key"])
@@ -35,7 +43,7 @@ def aes_text():
      
     return jsonify(response)
 
-def encrypt(padding, mode, iv, input, key):
+def encrypt_aes(padding, mode, iv, input, key):
     m_aes = AES(key.encode('utf-8'))
     if mode == "ECB":
         output = m_aes.encrypt_ecb(input, padding)
@@ -53,7 +61,7 @@ def encrypt(padding, mode, iv, input, key):
         "outputType": "BASE64"
     }
 
-def decrypt(padding, mode, iv, input, outputType, key):
+def decrypt_aes(padding, mode, iv, input, outputType, key):
     m_aes = AES(key.encode('utf-8'))
     if mode == "ECB":
         output = m_aes.decrypt_ecb(input, padding)

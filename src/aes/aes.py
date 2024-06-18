@@ -464,7 +464,7 @@ class AES:
             previous = block
 
         return b''.join(blocks)
-
+    
     def encrypt_ctr(self, plaintext, iv):
         """
             Mã hóa plaintext
